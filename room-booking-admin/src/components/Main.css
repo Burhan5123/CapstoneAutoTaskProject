@@ -1,0 +1,144 @@
+.main-table{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+}
+
+.search-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: #56ab2f;
+}
+
+.total-search{
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.search-input-explorer{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.search-icon{
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+.search-input{
+    border-radius: 3px;
+    border: none;
+}
+
+.table-header{
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.row-container{
+    vertical-align: top;
+}
+
+.button-add {
+    background-color: #56ab2f;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    width: 100%; /* Ajustar al ancho disponible */
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    border: #fff 1px solid;
+  }
+  
+  .button-add:hover {
+    background-color: #fff;
+    border: #56ab2f 1px solid;
+    color: #000;
+  }
+
+@media only screen and (min-width: 414px){
+    .search-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: #56ab2f;
+    }
+
+    .search-container-element{
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (min-width: 667px){
+    .total-search{
+        font-size: 15px;
+    }
+
+    .search-container-element{
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .total-search{
+        font-size: 16px;
+    }
+
+    .search-container-element{
+        margin-right: 25px;
+    }
+}
+
+@media only screen and (min-width: 844px){
+    .total-search{
+        font-size: 16px;
+    }
+
+    .search-container-element{
+        margin: 0 40px;
+    }
+}
+
+@media only screen and (min-width: 1180px){
+    .total-search{
+        font-size: 18px;
+    }
+
+    .search-container-element{
+        margin: 0 60px;
+    }
+
+    .search-icon{
+        font-size: 15px;
+        margin-right: 5px;
+    }
+
+    .search-input{
+        height: 30px;
+        font-size: 18px ;
+    }
+
+    .table-header{
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 1280px){
+    .table-header{
+        font-size: 16px;
+    }
+
+    .search-icon{
+        margin-right: 8px;
+    }
+}
