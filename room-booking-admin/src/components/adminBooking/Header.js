@@ -14,21 +14,21 @@ function Header({ title, logo, user }){
   }
   return (
     <header 
-      className={`header ${clicked ? 'clicked' : '' }`}
+      className={`header-ab ${clicked ? 'clicked' : '' }`}
     >
-      <img id="logo" src={logo} alt="Prospect company logo" /> 
-      <h1 className="title">{title}</h1>
-      <div className='burger'>
+      <img id="logo-ab" src={logo} alt="Prospect company logo" /> 
+      <h1 className="title-ab">{title}</h1>
+      <div className='burger-ab'>
         <BurgerButton
           clicked={clicked}
           handleClick={handleClick}
         />
       </div>
-      <div className={`user-container ${clicked? 'active' : ''}`}>
-        <FaHome className='header-icon' />
-        <IoNotificationsSharp className='header-icon' />
-        <FaUserCircle className='header-icon'/>
-        <span className='header-icon user-email'>{user.email}</span>
+      <div className={`user-container-ab ${clicked? 'active' : ''}`}>
+        <FaHome className='header-icon-ab' />
+        <IoNotificationsSharp className='header-icon-ab' />
+        <FaUserCircle className='header-icon-ab'/>
+        <span className='header-icon-ab user-email-ab'>{user.email}</span>
       </div>
       
     </header>
