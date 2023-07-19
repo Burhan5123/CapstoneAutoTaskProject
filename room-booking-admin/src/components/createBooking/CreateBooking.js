@@ -253,7 +253,7 @@ export default function CreateBooking() {
                     </button>
                   </>
                 ) : (
-                  <input className="submit-ct" type="submit" value="Book Room!" />
+                  <input className="submit-ct" type="submit" value="Book Room" />
                 )}
               </div>
             </form>
