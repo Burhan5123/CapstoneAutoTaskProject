@@ -104,6 +104,31 @@ app.post("/booking", (req, res) => {
   });
 });
 
+app.put("/update",(req,res) => {
+  const id = req.body.id;
+  const roomID = req.body.roomID;
+  const name = req.body.name;
+  const noOfGuest = req.body.noOfGuest;
+  const bookingDate = req.body.bookingDate;
+  const startTime = req.body.startTime;
+  const totalHours = req.body.totalHours;
+  const enquiry = req.body.enquiry;
+  const endTime = req.body.endTime;
+
+  db.query('UPDATE createBooking SET roomID=?, name=?, noOfGuest=?, bookingDate=?, startTime=?, totalHours=?, enquiry=?, endTime=? WHERE id=?', [roomID, name, noOfGuest, bookingDate, startTime
+  , totalHours, enquiry, endTime, id],
+    (err,result) => {
+      if(err){
+        console.log(err);
+        res.status(500).send('There have been an error while updating the current booking room request');
+      }else{
+        console.log(result);
+        res.send(result);
+      }
+    }
+  );
+});
+
 app.delete("/delete/:id", (req, res) => {
   const id = req.params.id;
 
