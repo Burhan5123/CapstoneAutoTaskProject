@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import logo from '../../assets/prospectLogo.png';
 import { Header } from './Header';
 import { Main } from './Main';
+import { useNavigate } from "react-router-dom";
 
 const user = {
   email: 'use@example.com',
@@ -13,7 +14,7 @@ const AdminBooking = () => {
 
   const [requests, setRequests] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState('');
-  
+  const navigate = useNavigate();
   const searchedRequests = requests.filter(
     (request) => {
       const valueToLower = searchValue.toLowerCase();
@@ -42,7 +43,24 @@ const AdminBooking = () => {
   const handleSearchInputChange = (event) => {
     const value = event.target.value;
     setSearchValue(value);
-    getRequestList(value);
+    // getRequestList(value);
+  };
+  
+  const handleEdit = (values) => {
+    const { id, roomID, name, noOfGuest, bookingDate, startTime, totalHours, enquiry, endTime } = values;
+    navigate('/createBooking', {
+      state: {
+        id,
+        roomID,
+        name,
+        noOfGuest,
+        bookingDate,
+        startTime,
+        totalHours,
+        enquiry,
+        endTime,
+      },
+    });
   };
   
   const toDelete = (id, name) => {
@@ -58,7 +76,6 @@ const AdminBooking = () => {
       if(result.isConfirmed) {
         Axios.delete(`http://localhost:3001/delete/${id}` )
         .then(() => {
-          console.log(id);
           getRequestList();
           Swal.fire({
             title:'Success!',
@@ -77,16 +94,32 @@ const AdminBooking = () => {
     });
   }
 
+
   const getRequestList = () => {
     Axios.get("http://localhost:3001/requests").then((response) => {
-      setRequests(response.data);
+      const formattedData = response.data.map((item) => {
+        const formattedDate = new Date(item.bookingDate).toISOString().split('T')[0];
+        return {
+          ...item,
+          bookingDate: formattedDate,
+        };
+      });
+      setRequests(formattedData);
     })
     .catch((error) => {
       console.log(error);
-    })
-  }
+    });
+  };
+
+  const handleAddBooking = () => {
+    navigate('/createBooking');
+  };
 
   getRequestList();
+
+  // React.useEffect(() => {
+  //   getRequestList();
+  // }, []);
 
   return (
     <>
@@ -100,10 +133,11 @@ const AdminBooking = () => {
         setRequests={setRequests}
         totalRequests={totalRequests}
         searchValue={searchValue}
-        setSearchValue={setSearchValue}
         handleSearchInputChange={handleSearchInputChange}
         toDelete={toDelete}
-      >
+        handleEdit={handleEdit}
+        handleAddBooking={handleAddBooking}
+>
       </Main>
     </>
   );

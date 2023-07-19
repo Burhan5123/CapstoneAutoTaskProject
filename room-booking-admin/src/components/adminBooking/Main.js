@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { Table } from './Table';
 import "./Main.css";
 
@@ -10,6 +10,8 @@ function Main({
   requests,
   handleSearchInputChange,
   toDelete,
+  handleEdit,
+  handleAddBooking,
 }) {  
 
   const [selectedRows, setSelectedRows] = useState([]);
@@ -21,6 +23,8 @@ function Main({
       setSelectedRows([...selectedRows, index]);
     }
   };
+
+  // const navigate = useNavigate();
 
   return (
     <>
@@ -53,23 +57,24 @@ function Main({
             <th className="table-header-ab">Enquiry</th>
             <th className="table-header-ab">End Time</th>
             <th>
-              <Link to="/createBooking" className="button-add-ab">
-                <button
-                  type="button"
-                  className="table-header-ab button-content-ab"
-                >
-                  Add Booking
-                </button>
-              </Link>
-              
+              <button
+                type="button"
+                className="table-header-ab button-content-ab"
+                onClick={() => {
+                  handleAddBooking();
+                }}
+              >
+                Add Booking
+              </button>
             </th>
           </tr>
         </thead>
         <tbody className="table-body-ab">
           {requests.map((val, index) => (
             <Table 
-              key={index}
+              key={val.id}
               isChecked={selectedRows.includes(index)}
+              id={val.id}
               roomID={val.roomID}
               name={val.name}
               noOfGuest={val.noOfGuest}
@@ -80,6 +85,7 @@ function Main({
               endTime={val.endTime}
               toDelete={() => toDelete(val.id, val.name)}
               onSelect={() => handleRowSelection(index)}
+              handleEdit={handleEdit}
             />
           ))}
         </tbody>

@@ -1,29 +1,41 @@
 import React from "react";
 import "./Table.css";
 
-function Table(props) {
+function Table({ id, roomID, name, noOfGuest, bookingDate, startTime, totalHours, enquiry, endTime, isChecked, onSelect, handleEdit, toDelete }) {
+
+
   return (
     <tr
-      className={props.isChecked ? "row-container-ab selected table-active" : "row-container-ab"}
-      onClick={props.onSelect}
+      className={isChecked ? "row-container-ab selected table-active" : "row-container-ab"}
+      onClick={onSelect}
     >
       <td className="table-data-ab"></td>
-      <td className="table-data-ab">{props.roomID}</td>
-      <td className="table-data-ab">{props.name}</td>
-      <td className="table-data-ab">{props.noOfGuest}</td>
-      <td className="table-data-ab">{props.bookingDate}</td>
-      <td className="table-data-ab">{props.startTime}</td>
-      <td className="table-data-ab">{props.totalHours}</td>
-      <td className="table-data-ab">{props.enquiry}</td>
-      <td className="table-data-ab">{props.endTime}</td>
+      <td className="table-data-ab">{roomID}</td>
+      <td className="table-data-ab">{name}</td>
+      <td className="table-data-ab">{noOfGuest}</td>
+      <td className="table-data-ab">{bookingDate}</td>
+      <td className="table-data-ab">{startTime}</td>
+      <td className="table-data-ab">{totalHours}</td>
+      <td className="table-data-ab">{enquiry}</td>
+      <td className="table-data-ab">{endTime}</td>
       <td className="table-data-ab">
-        {props.isChecked && (
+        {isChecked && (
           <>
             <button
               type="button"
               className="button-modify-ab"
               onClick={() => {
-                props.toDelete(props);
+                handleEdit({
+                  id,
+                  roomID,
+                  name,
+                  noOfGuest,
+                  bookingDate,
+                  startTime,
+                  totalHours,
+                  enquiry,
+                  endTime,
+                });
               }}
             >
               Edit
@@ -32,7 +44,7 @@ function Table(props) {
               type="button"
               className="button-delete-ab"
               onClick={() => {
-                props.toDelete(props);
+                toDelete(id, name);
               }}
             >
               Delete

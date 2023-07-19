@@ -59,21 +59,23 @@
     border: #000 1px solid;
     text-decoration: none;
   }
-  
-  .button-add-ab:hover {
-    background-color: #fff;
-    border: #56ab2f 1px solid;
-    color: #000;
-  }
 
   .button-content-ab{
+    width: 100%;
     font-size: 13px;
     text-align: center;
-    border: none;
-    background-color: transparent;
+    border: #000 1px solid;
+    background-color: #56ab2f;
+    border-radius: 5px;
     color: #000;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  .button-content-ab:hover {
+    background-color: #fff;
+    border: #56ab2f 1px solid;
+    color: #000;
   }
 
 @media only screen and (min-width: 414px){
